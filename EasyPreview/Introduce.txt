@@ -1,0 +1,12 @@
+﻿Windows 7 提供了一个新功能，文件预览，即不打开文件浏览其内容。
+只有提供了预览接口的文件才能被预览，可以通过注册表查询：
+HKEY_LOCAL_MACHINE|SOFTWARE|Microsoft|Windows|CurrentVersion|PreviewHandlers
+
+要实现这个功能不难，主要用到IPreviewHandler接口，来得到文件的预览图。
+原理：
+核心接口是IPreviewHandler，是Microsoft制定的一个接口，由各厂商实现，可以在注册表中找到相应的GUID。
+1. 如何得到Preview Handler的GUID
+  IPreviewHandler接口的GUID是8895b1c6-b41f-4c1c-a562-0d564250836f，通过搜索注册表可以找到实现此接口的GUID码
+  如：HKEY_CLASSES_ROOT|.docx|ShellEx|{8895b1c6-b41f-4c1c-a562-0d564250836f}
+2. 如何利用Preview Handler的函数实现预览图功能
+3. IPreviewHandler是COM接口，如何与C#交互
