@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPreview", "EasyPreview\EasyPreview.csproj", "{796A740D-E2C3-42A3-B5AC-2B695857C97E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPreviewTests", "EasyPreviewTests\EasyPreviewTests.csproj", "{56CC5CC6-F818-4278-9422-F6243315A626}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreviewHandlerTestForm", "PreviewHandlerTestForm\PreviewHandlerTestForm.csproj", "{E5E9F246-E410-4607-BE43-7D2D91F3BB0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{796A740D-E2C3-42A3-B5AC-2B695857C97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{796A740D-E2C3-42A3-B5AC-2B695857C97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{796A740D-E2C3-42A3-B5AC-2B695857C97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56CC5CC6-F818-4278-9422-F6243315A626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56CC5CC6-F818-4278-9422-F6243315A626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56CC5CC6-F818-4278-9422-F6243315A626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56CC5CC6-F818-4278-9422-F6243315A626}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5E9F246-E410-4607-BE43-7D2D91F3BB0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E9F246-E410-4607-BE43-7D2D91F3BB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E9F246-E410-4607-BE43-7D2D91F3BB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E9F246-E410-4607-BE43-7D2D91F3BB0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

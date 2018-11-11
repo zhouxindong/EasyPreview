@@ -8,5 +8,28 @@ HKEY_LOCAL_MACHINE|SOFTWARE|Microsoft|Windows|CurrentVersion|PreviewHandlers
 1. 如何得到Preview Handler的GUID
   IPreviewHandler接口的GUID是8895b1c6-b41f-4c1c-a562-0d564250836f，通过搜索注册表可以找到实现此接口的GUID码
   如：HKEY_CLASSES_ROOT|.docx|ShellEx|{8895b1c6-b41f-4c1c-a562-0d564250836f}
+
 2. 如何利用Preview Handler的函数实现预览图功能
+  第1步已经找到GUID了，下面就用这个GUID来创建一个COM实例，使用Activator类，可以在本地或从远程创建对象类型，或
+  获取对现有远程对象的引用，这个类提供了创建COM对象的方法。
+  创建完对象后如何用对象来实现文件预览功能呢? IPreviewHandler接口定义了一些方法来实现文件预览，刚才创建的对象
+  实现了这个接口，所以我们需要把创建的COM对象转换成IPreviewHandler对象，然后调用相应的方法。
+  在把COM对象转换成IPreviewHandler接口之前，要对COM对象进行初始化，需要用到另外两个接口IInitializeWithFile和
+  IInitializeWithStream。初始化的目的是让对象获取能够进行内容预览的文件数据。
+  
+  初始化COM对象后，需要将COM对象转换为IPreviewHandler对象来完成预览
+          // Convert obj to IPreviewHandler object
+          IPreviewHandler pHandler = obj as IPreviewHandler;
+          if(pHandler != null)
+          {
+               // TODO: Begin to get preview
+               RECT rect = new RECT(viewRect);
+               pHandler.SetWindow(handler, ref rect);
+               pHandler.SetRect(ref rect);
+               pHandler.DoPreview();
+               pHandler.Unload();
+               Marshal.ReleaseComObject(pHandler);
+          }
+
 3. IPreviewHandler是COM接口，如何与C#交互
+  [ComImport]
