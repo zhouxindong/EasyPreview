@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using EasyPreview.PreviewHandler;
+using EasyPreview.Kernel;
 
 namespace PreviewHandlerTestForm
 {
@@ -83,7 +83,7 @@ namespace PreviewHandlerTestForm
                 Rectangle r = _panel_preview.ClientRectangle;
 
                 ((IPreviewHandler)_handler).SetRect(ref r);
-                ((IPreviewHandler)_handler).DoPreview();
+                //((IPreviewHandler)_handler).DoPreview();
             }
             else
             {

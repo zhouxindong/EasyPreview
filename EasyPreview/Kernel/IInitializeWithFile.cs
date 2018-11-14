@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace EasyPreview.PreviewHandler
+namespace EasyPreview.Kernel
 {
     [ComImport, InterfaceType(ComInterfaceType.InterfaceIsIUnknown), Guid("b7d14566-0509-4cce-a71f-0a554233bd9b")]
     public interface IInitializeWithFile

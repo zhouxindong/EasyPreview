@@ -13,7 +13,7 @@ namespace EasyPreview.PreviewHandler.Tests
         [TestMethod()]
         public void GetCLSIDFromExtensionShellExTest()
         {
-            var clsid = PreviewHandler.GetCLSIDFromExtensionShellEx(PreviewHandler.PreviewHandlerGuid,
+            var clsid = Kernel.PreviewHandler.GetCLSIDFromExtensionShellEx(Kernel.PreviewHandler.PreviewHandlerGuid,
                 ".pdf");
             Console.WriteLine(clsid);
         }

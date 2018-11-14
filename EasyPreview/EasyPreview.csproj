@@ -41,15 +41,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PreviewHandler\COMStream.cs" />
-    <Compile Include="PreviewHandler\IInitializeWithFile.cs" />
-    <Compile Include="PreviewHandler\IInitializeWithStream.cs" />
-    <Compile Include="PreviewHandler\IPreviewHandler.cs" />
-    <Compile Include="PreviewHandler\PreviewHandler.cs" />
+    <Compile Include="Host\DefaultPreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Kernel\COMStream.cs" />
+    <Compile Include="Kernel\IInitializeWithFile.cs" />
+    <Compile Include="Kernel\IInitializeWithStream.cs" />
+    <Compile Include="Kernel\IPreviewHandler.cs" />
+    <Compile Include="Kernel\PreviewHandler.cs" />
+    <Compile Include="Host\IPreviewHandlerHost.cs" />
+    <Compile Include="Host\PreviewHandlerHostBase.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Introduce.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Messages.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@
 using System.IO;
 using Microsoft.Win32;
 
-namespace EasyPreview.PreviewHandler
+namespace EasyPreview.Kernel
 {
     public class PreviewHandler
     {

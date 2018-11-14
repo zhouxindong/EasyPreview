@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace EasyPreview.PreviewHandler
+namespace EasyPreview.Kernel
 {
     [ComImport, InterfaceType(ComInterfaceType.InterfaceIsIUnknown), Guid(PreviewHandler.CLSID)]
     public interface IPreviewHandler
