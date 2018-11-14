@@ -10,6 +10,9 @@ using Microsoft.Win32;
 
 namespace EasyPreview.Host
 {
+    /// <summary>
+    /// Use the Host from Registry 
+    /// </summary>
     public class DefaultPreviewHandlerHost : PreviewHandlerHostBase
     {
         private object _handler;        // COM object implement IPreviewHandler
@@ -169,20 +172,20 @@ namespace EasyPreview.Host
         /// <summary>
         /// Opens the specified file using the appropriate preview handler and displays the result in this PreviewHandlerHost.
         /// </summary>
-        /// <param name="filename"></param>
+        /// <param name="file_name"></param>
         /// <returns></returns>
-        public override bool Open(string filename)
+        public override bool Open(string file_name)
         {
             UnloadPreviewHandler();
 
-            if (string.IsNullOrEmpty(filename))
+            if (string.IsNullOrEmpty(file_name))
             {
                 ErrorMessage = Messages.FileNotLoaded;
                 return false;
             }
 
             // try to get GUID for the preview handler
-            var guid = GetPreviewHandlerGUID(filename);
+            var guid = GetPreviewHandlerGUID(file_name);
             ErrorMessage = "";
 
             if (guid != Guid.Empty)
@@ -204,15 +207,15 @@ namespace EasyPreview.Host
                     if (_handler is IInitializeWithFile)
                     {
                         // some handlers accept a filename
-                        ((IInitializeWithFile)_handler).Initialize(filename, 0);
+                        ((IInitializeWithFile)_handler).Initialize(file_name, 0);
                     }
                     else if (_handler is IInitializeWithStream)
                     {
-                        if (File.Exists(filename))
+                        if (File.Exists(file_name))
                         {
                             // other handlers want an IStream (in this case, a file stream)
-                            _handler_stream = File.Open(filename, FileMode.Open);
-                            var stream = new COMStream(_handler_stream);
+                            _handler_stream = File.Open(file_name, FileMode.Open);
+                            var stream = new ComStream(_handler_stream);
                             ((IInitializeWithStream)_handler).Initialize(stream, 0);
                         }
                         else

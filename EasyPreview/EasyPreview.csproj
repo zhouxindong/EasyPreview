@@ -11,6 +11,8 @@
     <AssemblyName>EasyPreview</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BitMiracle.LibTiff.NET, Version=2.3.606.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libs\BitMiracle.LibTiff.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -41,10 +47,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Host\BrowserPreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Host\DefaultPreviewHandlerHost.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Kernel\COMStream.cs" />
+    <Compile Include="Host\DefaultPreviewHostsMapping.cs" />
+    <Compile Include="Host\ImagePreviewHandlerHost.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Host\PreviewContainer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Host\PreviewContainer.Designer.cs" />
+    <Compile Include="Host\PreviewHandlerHostFactory.cs" />
+    <Compile Include="Kernel\ComStream.cs" />
     <Compile Include="Kernel\IInitializeWithFile.cs" />
     <Compile Include="Kernel\IInitializeWithStream.cs" />
     <Compile Include="Kernel\IPreviewHandler.cs" />
@@ -53,6 +71,11 @@
     <Compile Include="Host\PreviewHandlerHostBase.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PaginalImage\CachedLibTiffImage.cs" />
+    <Compile Include="PaginalImage\ImageFactory.cs" />
+    <Compile Include="PaginalImage\IPaginalImageFile.cs" />
+    <Compile Include="PaginalImage\IPaginalPreviewHandlerHost.cs" />
+    <Compile Include="PaginalImage\PaginalImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\Messages.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -62,13 +85,22 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Introduce.txt" />
+    <Content Include="Libs\BitMiracle.LibTiff.NET.dll" />
+    <EmbeddedResource Include="Host\PreviewContainer.resx">
+      <DependentUpon>PreviewContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="zoom.cur" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Host\ImagePreviewHandlerHost.resx">
+      <DependentUpon>ImagePreviewHandlerHost.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,7 +10,7 @@ namespace EasyPreview.Host
     public class PreviewHandlerHostBase : Control, IPreviewHandlerHost
     {
         #region Implementation of IPreviewHandlerHost
-        public virtual bool Open(string filename)
+        public virtual bool Open(string file_name)
         {
             return false;
         }

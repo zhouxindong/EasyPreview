@@ -5,6 +5,6 @@
     /// </summary>
     public interface IPreviewHandlerHost
     {
-        bool Open(string filename);
+        bool Open(string file_name);
     }
 }

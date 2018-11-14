@@ -9,7 +9,7 @@ namespace EasyPreview.Kernel
     /// Provides a bare-bones implementation of System.Runtime.InteropServices.IStream that wraps an System.IO.Stream.
     /// </summary>
     [ClassInterface(ClassInterfaceType.AutoDispatch)]
-    internal class COMStream : IStream
+    internal class ComStream : IStream
     {
         private readonly Stream _inner_stream;
 
@@ -17,7 +17,7 @@ namespace EasyPreview.Kernel
         /// Initialises a new instance of the StreamWrapper class, using the specified System.IO.Stream.
         /// </summary>
         /// <param name="inner"></param>
-        public COMStream(Stream inner)
+        public ComStream(Stream inner)
         {
             _inner_stream = inner;
         }
@@ -91,7 +91,7 @@ namespace EasyPreview.Kernel
         /// <param name="plib_new_position"></param>
         public void Seek(long dlib_move, int dw_origin, IntPtr plib_new_position)
         {
-            long pos = _inner_stream.Seek(dlib_move, (System.IO.SeekOrigin)dw_origin);
+            long pos = _inner_stream.Seek(dlib_move, (SeekOrigin)dw_origin);
             if (plib_new_position != IntPtr.Zero) Marshal.WriteInt64(plib_new_position, pos);
         }
 
@@ -140,7 +140,7 @@ namespace EasyPreview.Kernel
         public void Write(byte[] pv, int cb, IntPtr pcb_written)
         {
             _inner_stream.Write(pv, 0, cb);
-            if (pcb_written != IntPtr.Zero) Marshal.WriteInt64(pcb_written, (Int64)cb);
+            if (pcb_written != IntPtr.Zero) Marshal.WriteInt64(pcb_written, cb);
         }
     }
 

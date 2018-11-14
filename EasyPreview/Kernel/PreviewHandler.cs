@@ -67,7 +67,7 @@ namespace EasyPreview.Kernel
             var stream_init = obj as IInitializeWithStream;
             if (stream_init == null) return false;
             var stream = new FileStream(file_name, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-            COMStream com_stream = new COMStream(stream);
+            ComStream com_stream = new ComStream(stream);
             stream_init.Initialize(com_stream, 0);
             return true;
         }
